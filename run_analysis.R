@@ -78,8 +78,3 @@ runAnalysis <- function() {
     # Also return data
     tidyMeans
 }
-
-# Use to check that the tidyMeans.txt is properly readable
-checkData <- function() {
-    read.table("tidyMeans.txt", header = TRUE)
-}
