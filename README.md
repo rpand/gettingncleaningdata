@@ -17,7 +17,7 @@ if(!file.exists(dataDir)) { unzip(zipFile, exdir = downloadDir) }
 
 ###"1. Merges the training and the test sets to create one data set."
 
-Merge and add in the feature names:
+#### Merge and add in the feature names:
 
 read <- function(path) { read.table(path(dataDir, path)) }  
 if(!exists("XTrain")) { XTrain <- read("train/X_train.txt") } 
@@ -27,13 +27,13 @@ featureNames <- read("features.txt")[, 2] names(merged) <- featureNames
 
 ### "2. Extracts only the measurements on the mean and standard deviation for each measurement."
 
-Limit to columns with feature names matching mean() or std():
+#### Limit to columns with feature names matching mean() or std():
 matches <- grep("(mean|std)\\(\\)", names(merged)) 
 limited <- merged[, matches]
 
 ### "3. Uses descriptive activity names to name the activities in the data set"
 
-Get the activity data and map to nicer names:
+#### Get the activity data and map to nicer names:
 yTrain <- read("train/y_train.txt") 
 yTest  <- read("test/y_test.txt") 
 yMerged <- rbind(yTrain, yTest)[, 1]  
@@ -42,7 +42,7 @@ activities <- activityNames[yMerged]
 
 ### "4. Appropriately labels the data set with descriptive variable names."
 
-Change t to Time-, f to Frequency-, mean() to Mean and std() to Standard-Deviation
+#### Change t to Time-, f to Frequency-, mean() to Mean and std() to Standard-Deviation
 names(limited) <- gsub("^t", "Time", names(limited)) 
 names(limited) <- gsub("^f", "Frequency", names(limited)) 
 names(limited) <- gsub("-mean\\(\\)", "Mean", names(limited)) 
@@ -50,7 +50,7 @@ names(limited) <- gsub("-std\\(\\)", "StdDev", names(limited))
 names(limited) <- gsub("-", "", names(limited))
 names(limited) <- gsub("BodyBody", "Body", names(limited))
 
-Add activities and subject with nice names
+#### Add activities and subject with nice names
 subjectTrain <- read("train/subject_train.txt") 
 subjectTest  <- read("test/subject_test.txt") 
 subjects <- rbind(subjectTrain, subjectTest)[, 1]  
