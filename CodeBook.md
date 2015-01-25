@@ -6,6 +6,7 @@ These variables identify the unique subject/activity pair the variables relate t
 
 1. Subject: the integer subject ID.
 2. Activity: the string activity name:
+
 *Walking
 *Walking Upstairs
 *Walking Downstairs
