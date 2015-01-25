@@ -3,8 +3,8 @@
 ##Subject and Activity
 
 These variables identify the unique subject/activity pair the variables relate to:
-•	Subject: the integer subject ID.
-•	Activity: the string activity name:
+1. Subject: the integer subject ID.
+2. Activity: the string activity name:
 o	Walking
 o	Walking Upstairs
 o	Walking Downstairs
