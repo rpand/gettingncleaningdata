@@ -7,9 +7,12 @@ The final data set can be found in the tidyMeans.txt file, which can be read int
 Mean{timeOrFreq}{measurement}{meanOrStd}{XYZ}
 Where timeOrFreq is either Time or Frequency, indicating whether the measurement comes from the time or frequency domain, measurement is one of the original measurement features, meanOrStd is either Mean or StdDev, indicating whether the measurement was a mean or standard deviation variable, and XYZ is X, Y, or Z, indicating the axis along which the measurement was taken, or nothing, for magnitude measurements.
 
+To run the analysis just source the script and run the function runAnalysis from console. The data is automatically downloaded in a new folder "UCI HR Dataset" and unzipped. After the code is run a file ith the tidy dataset "tidyMeans.txt" will be generated in the working directory.
+
 ## Get and extract data
 url <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip" 
-downloadDir <- "data"  path <- function(...) { paste(..., sep = "/") }  
+downloadDir <- "data"  
+path <- function(...) { paste(..., sep = "/") }  
 zipFile <- path(downloadDir, "dataset.zip") 
 if(!file.exists(zipFile)) { download.file(url, zipFile, method = "curl") }  
 dataDir <- path(downloadDir, "UCI HAR Dataset") 
