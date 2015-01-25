@@ -1,5 +1,7 @@
 #Code Book
-Subject and Activity
+
+##Subject and Activity
+
 These variables identify the unique subject/activity pair the variables relate to:
 •	Subject: the integer subject ID.
 •	Activity: the string activity name:
@@ -9,7 +11,9 @@ o	Walking Downstairs
 o	Sitting
 o	Standing
 o	Laying
-Measurement Means
+
+##Measurement Means
+
 All variables are the mean of a measurement for each subject and activity. This is indicated by the initial Mean in the variable name. All values are floating point numbers.
 •	Time domain body acceleration mean along X, Y, and Z:
 o	MeanTimeBodyAccMeanX
