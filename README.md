@@ -15,7 +15,7 @@ if(!file.exists(zipFile)) { download.file(url, zipFile, method = "curl") }
 dataDir <- path(downloadDir, "UCI HAR Dataset") 
 if(!file.exists(dataDir)) { unzip(zipFile, exdir = downloadDir) }
 
-###"1. Merges the training and the test sets to create one data set."
+###1. Merges the training and the test sets to create one data set
 
 #### Merge and add in the feature names:
 
@@ -25,13 +25,13 @@ if(!exists("XTest"))  { XTest  <- read("test/X_test.txt") }
 merged <- rbind(XTrain, XTest)  
 featureNames <- read("features.txt")[, 2] names(merged) <- featureNames
 
-### "2. Extracts only the measurements on the mean and standard deviation for each measurement."
+### 2. Extracts only the measurements on the mean and standard deviation for each measurement
 
 #### Limit to columns with feature names matching mean() or std():
 matches <- grep("(mean|std)\\(\\)", names(merged)) 
 limited <- merged[, matches]
 
-### "3. Uses descriptive activity names to name the activities in the data set"
+### 3. Uses descriptive activity names to name the activities in the data set
 
 #### Get the activity data and map to nicer names:
 yTrain <- read("train/y_train.txt") 
@@ -40,7 +40,7 @@ yMerged <- rbind(yTrain, yTest)[, 1]
 activityNames <-   c("Walking", "Walking Upstairs", "Walking Downstairs", "Sitting", "Standing", "Laying") 
 activities <- activityNames[yMerged]
 
-### "4. Appropriately labels the data set with descriptive variable names."
+### 4. Appropriately labels the data set with descriptive variable names
 
 #### Change t to Time-, f to Frequency-, mean() to Mean and std() to Standard-Deviation
 names(limited) <- gsub("^t", "Time", names(limited)) 
@@ -56,7 +56,7 @@ subjectTest  <- read("test/subject_test.txt")
 subjects <- rbind(subjectTrain, subjectTest)[, 1]  
 tidy <- cbind(Subject = subjects, Activity = activities, limited)
 
-### "5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject."
+### 5. Creates a second, independent tidy data set with the average of each variable for each activity and each subject
 
 library(plyr) # Column means for all but the subject and activity columns 
 limitedColMeans <- function(data) { colMeans(data[,-c(1,2)]) } 
