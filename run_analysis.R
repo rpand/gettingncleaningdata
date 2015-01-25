@@ -1,6 +1,6 @@
 XTrain <- XTest <- NULL
 runAnalysis <- function() {
-    # Get and extract data
+    # Get and extract  the data
     
     filePath <- function(...) { paste(..., sep = "/") }
     
@@ -58,7 +58,7 @@ runAnalysis <- function() {
     names(limited) <- gsub("-", "", names(limited))
     names(limited) <- gsub("BodyBody", "Body", names(limited))
     
-    # Add activities and subject with nice names
+    # Clean up activity and subject names
     subjectTrain <- read("train/subject_train.txt")
     subjectTest  <- read("test/subject_test.txt")
     subjects <- rbind(subjectTrain, subjectTest)[, 1]
@@ -72,7 +72,7 @@ runAnalysis <- function() {
     tidyMeans <- ddply(tidy, .(Subject, Activity), limitedColMeans)
     names(tidyMeans)[-c(1,2)] <- paste0("Mean", names(tidyMeans)[-c(1,2)])
     
-    # Write file
+    # Write  the tidy file
     write.table(tidyMeans, "tidyMeans.txt", row.names = FALSE)
     
     # Also return data
